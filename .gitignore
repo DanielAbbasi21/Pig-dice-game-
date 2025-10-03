@@ -7,3 +7,4 @@ dice/doc
 guess/doc
 build/
 coverage.xml
+.DS_Store
