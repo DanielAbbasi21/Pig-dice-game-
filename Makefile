@@ -8,7 +8,7 @@ PYTHON ?= python # python3 py
 # Print out colored action message
 MESSAGE = printf "\033[32;01m---> $(1)\033[0m\n"
 
-all:
+all: version
 
 
 # ---------------------------------------------------------
@@ -38,6 +38,12 @@ install:
 installed:
 	$(PYTHON) -m pip list
 
+# ---------------------------------------------------------
+# Run the game
+#
+run:
+	@$(call MESSAGE,$@)
+	$(PYTHON) -m dice.main
 
 # ---------------------------------------------------------
 # Cleanup generated and installed files.
@@ -62,11 +68,11 @@ clean-all: clean clean-doc
 #
 pylint:
 	@$(call MESSAGE,$@)
-	-cd dice && $(PYTHON) -m pylint *.py
+	cd dice && $(PYTHON) -m pylint *.py
 
 flake8:
 	@$(call MESSAGE,$@)
-	-flake8
+	flake8
 
 lint: flake8 pylint
 
@@ -86,20 +92,15 @@ codestyle: black
 #
 unittest:
 	@$(call MESSAGE,$@)
-	 $(PYTHON) -m unittest discover
+	$(PYTHON) -m unittest discover -s test -p "test_*.py"
 
 coverage:
 	@$(call MESSAGE,$@)
-	coverage run -m unittest discover
+	coverage run -m unittest discover -s test -p "test_*.py"
 	coverage html
 	coverage report -m
 
-coverage-xml:
-	@$(call MESSAGE,$@)
-	coverage run -m unittest discover
-	coverage xml
-
-test: lint coverage
+test: lint unittest
 
 
 # ---------------------------------------------------------
