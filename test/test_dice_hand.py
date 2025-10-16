@@ -1,24 +1,27 @@
-"""A small helper that rolls multiple dice at once."""
-from __future__ import annotations
-from typing import Tuple
-from dataclasses import dataclass
-from .dice import Die
+import unittest
+from unittest.mock import patch
+from dice import dice_hand as dice_hand_module
 
 
+class StubDie:
+   def __init__(self, seq):
+       self._it = iter(seq)
+   def roll(self):
+       return next(self._it)
 
 
-@dataclass
-class DiceHand:
-   """A hand of N dice. Default is the two dice used in Pig variant."""
+class TestDiceHand(unittest.TestCase):
+   def test_roll_two_dice(self):
+       seqs = [[3], [5]]  # one value per die
 
 
-   count: int = 2
+       def factory(*args, **kwargs):
+           return StubDie(seqs.pop(0))
 
 
-   def __post_init__(self) -> None:
-       self._dice = [Die() for _ in range(self.count)]
+       with patch.object(dice_hand_module, "Die", side_effect=factory):
+           hand = dice_hand_module.DiceHand(count=2)
+           vals = hand.roll()
+           self.assertEqual(vals, (3, 5))
 
 
-   def roll(self) -> Tuple[int, ...]:
-       """Roll all dice and return a tuple of their values."""
-       return tuple(d.roll() for d in self._dice)
