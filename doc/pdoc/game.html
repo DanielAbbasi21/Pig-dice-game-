@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>dice.game API documentation</title>
+<meta name="description" content="Game engine coordinating players, rules and dice …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>dice.game</code></h1>
+</header>
+<section id="section-intro">
+<p>Game engine coordinating players, rules and dice.</p>
+<p>This class contains no I/O; the CLI in <code>main.py</code> handles printing.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="dice.game.Game"><code class="flex name class">
+<span>class <span class="ident">Game</span></span>
+<span>(</span><span>players: List[Player],<br>target: int = 100,<br>dice: DiceHand = &lt;factory&gt;,<br>highs: Optional[HighScore] = None)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass
+class Game:
+   players: List[Player]
+   target: int = 100
+   dice: DiceHand = field(default_factory=DiceHand)
+   highs: Optional[HighScore] = None
+
+
+   def __post_init__(self) -&gt; None:
+       self.highs = self.highs or HighScore()
+       self.turn_total = 0
+       self.turns_taken = 0
+       self._current_idx = 0
+       self._winner: Optional[Player] = None
+       self._cheat_queue: List[Tuple[int, int]] = []
+
+
+   # ---- lifecycle ----
+   @classmethod
+   def vs_computer(cls, human_name: str = &#34;You&#34;, ai_level: str = &#34;medium&#34;, target: int = 100) -&gt; &#34;Game&#34;:
+       level = {&#34;easy&#34;: 15, &#34;medium&#34;: 20, &#34;hard&#34;: 25}.get(ai_level, 20)
+       p1 = Player(str(uuid.uuid4()), human_name)
+       bot = Computer(str(uuid.uuid4()), &#34;Computer&#34;, Intelligence(level))
+       return cls([p1, bot], target=target)
+
+
+   def start(self) -&gt; None:
+       for p in self.players:
+           p.reset_score()
+       self.turn_total = 0
+       self.turns_taken = 0
+       self._current_idx = 0
+       self._winner = None
+       self._cheat_queue.clear()
+
+
+   # ---- properties ----
+   def current_player(self) -&gt; Player:
+       return self.players[self._current_idx]
+
+
+   def opponent(self) -&gt; Player:
+       return self.players[1 - self._current_idx]
+
+
+   def winner(self) -&gt; Optional[Player]:
+       return self._winner
+
+
+   # ---- helpers ----
+   def _next_player(self) -&gt; None:
+       self._current_idx = 1 - self._current_idx
+       self.turn_total = 0
+
+
+   def set_cheat(self, next_rolls: List[Tuple[int, int]]) -&gt; None:
+       self._cheat_queue = list(next_rolls)
+
+
+   def _roll_dice(self) -&gt; Tuple[int, int]:
+       if self._cheat_queue:
+           return self._cheat_queue.pop(0)
+       d1, d2 = self.dice.roll()
+       return int(d1), int(d2)
+
+
+   # ---- actions ----
+   def roll(self) -&gt; Tuple[int, int, str]:
+       if self._winner:
+           return (0, 0, f&#34;Game over. {self._winner.name} already won.&#34;)
+
+
+       d1, d2 = self._roll_dice()
+       outcome = evaluate_roll(d1, d2)
+       message = &#34;&#34;
+
+
+       if outcome is Outcome.CONTINUE:
+           gain = turn_points_gain(d1, d2)
+           self.turn_total += gain
+           message = &#34;\n&#34;f&#34;Rolled {d1}+{d2} → +{gain} this turn (total {self.turn_total}).&#34;
+       elif outcome is Outcome.AUTO_HOLD:
+           message = &#34;\n&#34;f&#34;Rolled {d1}+{d2} (single 1) → auto-hold {self.turn_total}.&#34;
+           self.hold(auto=True)
+       else:  # BUST_ALL
+           self.current_player().reset_score()
+           message = &#34;\n&#34;f&#34;Rolled {d1}+{d2} (double ones) → lose all saved points!&#34;
+           self._next_player()
+           self.turns_taken += 1
+       return d1, d2, message
+
+
+   def hold(self, auto: bool = False) -&gt; str:
+       if self._winner:
+           return &#34;\n&#34;f&#34;Game over. {self._winner.name} already won.&#34;
+       player = self.current_player()
+       player.add_points(self.turn_total)
+       msg = f&#34;{player.name} holds {self.turn_total}. New score: {player.score}.&#34;
+       if player.score &gt;= self.target:
+           self._winner = player
+           msg += &#34;\n&#34;f&#34; \n{player.name} wins!&#34;
+           # update highscores
+           if self.highs:
+               self.highs.record_game(player.pid, player.name, True, self.turns_taken + 1, player.score)
+               self.highs.record_game(self.opponent().pid, self.opponent().name, False, self.turns_taken + 1, self.opponent().score)
+       self._next_player()
+       self.turns_taken += 1
+       return msg</code></pre>
+</details>
+<div class="desc"><p>Game(players: 'List[Player]', target: 'int' = 100, dice: 'DiceHand' = <factory>, highs: 'Optional[HighScore]' = None)</p></div>
+<h3>Static methods</h3>
+<dl>
+<dt id="dice.game.Game.vs_computer"><code class="name flex">
+<span>def <span class="ident">vs_computer</span></span>(<span>human_name: str = 'You', ai_level: str = 'medium', target: int = 100) ‑> <a title="dice.game.Game" href="#dice.game.Game">Game</a></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="dice.game.Game.dice"><code class="name">var <span class="ident">dice</span> : <a title="dice.dice_hand.DiceHand" href="dice_hand.html#dice.dice_hand.DiceHand">DiceHand</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="dice.game.Game.highs"><code class="name">var <span class="ident">highs</span> : <a title="dice.highscore.HighScore" href="highscore.html#dice.highscore.HighScore">HighScore</a> | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="dice.game.Game.players"><code class="name">var <span class="ident">players</span> : List[<a title="dice.player.Player" href="player.html#dice.player.Player">Player</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="dice.game.Game.target"><code class="name">var <span class="ident">target</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="dice.game.Game.current_player"><code class="name flex">
+<span>def <span class="ident">current_player</span></span>(<span>self) ‑> <a title="dice.player.Player" href="player.html#dice.player.Player">Player</a></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def current_player(self) -&gt; Player:
+    return self.players[self._current_idx]</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="dice.game.Game.hold"><code class="name flex">
+<span>def <span class="ident">hold</span></span>(<span>self, auto: bool = False) ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def hold(self, auto: bool = False) -&gt; str:
+    if self._winner:
+        return &#34;\n&#34;f&#34;Game over. {self._winner.name} already won.&#34;
+    player = self.current_player()
+    player.add_points(self.turn_total)
+    msg = f&#34;{player.name} holds {self.turn_total}. New score: {player.score}.&#34;
+    if player.score &gt;= self.target:
+        self._winner = player
+        msg += &#34;\n&#34;f&#34; \n{player.name} wins!&#34;
+        # update highscores
+        if self.highs:
+            self.highs.record_game(player.pid, player.name, True, self.turns_taken + 1, player.score)
+            self.highs.record_game(self.opponent().pid, self.opponent().name, False, self.turns_taken + 1, self.opponent().score)
+    self._next_player()
+    self.turns_taken += 1
+    return msg</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="dice.game.Game.opponent"><code class="name flex">
+<span>def <span class="ident">opponent</span></span>(<span>self) ‑> <a title="dice.player.Player" href="player.html#dice.player.Player">Player</a></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def opponent(self) -&gt; Player:
+    return self.players[1 - self._current_idx]</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="dice.game.Game.roll"><code class="name flex">
+<span>def <span class="ident">roll</span></span>(<span>self) ‑> Tuple[int, int, str]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def roll(self) -&gt; Tuple[int, int, str]:
+    if self._winner:
+        return (0, 0, f&#34;Game over. {self._winner.name} already won.&#34;)
+
+
+    d1, d2 = self._roll_dice()
+    outcome = evaluate_roll(d1, d2)
+    message = &#34;&#34;
+
+
+    if outcome is Outcome.CONTINUE:
+        gain = turn_points_gain(d1, d2)
+        self.turn_total += gain
+        message = &#34;\n&#34;f&#34;Rolled {d1}+{d2} → +{gain} this turn (total {self.turn_total}).&#34;
+    elif outcome is Outcome.AUTO_HOLD:
+        message = &#34;\n&#34;f&#34;Rolled {d1}+{d2} (single 1) → auto-hold {self.turn_total}.&#34;
+        self.hold(auto=True)
+    else:  # BUST_ALL
+        self.current_player().reset_score()
+        message = &#34;\n&#34;f&#34;Rolled {d1}+{d2} (double ones) → lose all saved points!&#34;
+        self._next_player()
+        self.turns_taken += 1
+    return d1, d2, message</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="dice.game.Game.set_cheat"><code class="name flex">
+<span>def <span class="ident">set_cheat</span></span>(<span>self, next_rolls: List[Tuple[int, int]]) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_cheat(self, next_rolls: List[Tuple[int, int]]) -&gt; None:
+    self._cheat_queue = list(next_rolls)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="dice.game.Game.start"><code class="name flex">
+<span>def <span class="ident">start</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def start(self) -&gt; None:
+    for p in self.players:
+        p.reset_score()
+    self.turn_total = 0
+    self.turns_taken = 0
+    self._current_idx = 0
+    self._winner = None
+    self._cheat_queue.clear()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="dice.game.Game.winner"><code class="name flex">
+<span>def <span class="ident">winner</span></span>(<span>self) ‑> <a title="dice.player.Player" href="player.html#dice.player.Player">Player</a> | None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def winner(self) -&gt; Optional[Player]:
+    return self._winner</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="dice" href="index.html">dice</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="dice.game.Game" href="#dice.game.Game">Game</a></code></h4>
+<ul class="two-column">
+<li><code><a title="dice.game.Game.current_player" href="#dice.game.Game.current_player">current_player</a></code></li>
+<li><code><a title="dice.game.Game.dice" href="#dice.game.Game.dice">dice</a></code></li>
+<li><code><a title="dice.game.Game.highs" href="#dice.game.Game.highs">highs</a></code></li>
+<li><code><a title="dice.game.Game.hold" href="#dice.game.Game.hold">hold</a></code></li>
+<li><code><a title="dice.game.Game.opponent" href="#dice.game.Game.opponent">opponent</a></code></li>
+<li><code><a title="dice.game.Game.players" href="#dice.game.Game.players">players</a></code></li>
+<li><code><a title="dice.game.Game.roll" href="#dice.game.Game.roll">roll</a></code></li>
+<li><code><a title="dice.game.Game.set_cheat" href="#dice.game.Game.set_cheat">set_cheat</a></code></li>
+<li><code><a title="dice.game.Game.start" href="#dice.game.Game.start">start</a></code></li>
+<li><code><a title="dice.game.Game.target" href="#dice.game.Game.target">target</a></code></li>
+<li><code><a title="dice.game.Game.vs_computer" href="#dice.game.Game.vs_computer">vs_computer</a></code></li>
+<li><code><a title="dice.game.Game.winner" href="#dice.game.Game.winner">winner</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>
