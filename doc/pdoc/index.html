@@ -1,0 +1,946 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>dice API documentation</title>
+<meta name="description" content="Pig Dice Game package …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Package <code>dice</code></h1>
+</header>
+<section id="section-intro">
+<p>Pig Dice Game package.</p>
+<p>Expose handy top-level imports for convenience when using the package as a module.</p>
+</section>
+<section>
+<h2 class="section-title" id="header-submodules">Sub-modules</h2>
+<dl>
+<dt><code class="name"><a title="dice.computer" href="computer.html">dice.computer</a></code></dt>
+<dd>
+<div class="desc"><p>The computer opponent and a simple, configurable strategy.</p></div>
+</dd>
+<dt><code class="name"><a title="dice.dice" href="dice.html">dice.dice</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="dice.dice_hand" href="dice_hand.html">dice.dice_hand</a></code></dt>
+<dd>
+<div class="desc"><p>A small helper that rolls multiple dice at once.</p></div>
+</dd>
+<dt><code class="name"><a title="dice.game" href="game.html">dice.game</a></code></dt>
+<dd>
+<div class="desc"><p>Game engine coordinating players, rules and dice …</p></div>
+</dd>
+<dt><code class="name"><a title="dice.highscore" href="highscore.html">dice.highscore</a></code></dt>
+<dd>
+<div class="desc"><p>Simple JSON-backed high-score store keyed by player id (pid).</p></div>
+</dd>
+<dt><code class="name"><a title="dice.main" href="main.html">dice.main</a></code></dt>
+<dd>
+<div class="desc"><p>Text-based UI using cmd.Cmd. Keeps commands tiny &amp; friendly.</p></div>
+</dd>
+<dt><code class="name"><a title="dice.player" href="player.html">dice.player</a></code></dt>
+<dd>
+<div class="desc"><p>Player model used by the game and high-score system.</p></div>
+</dd>
+<dt><code class="name"><a title="dice.rules" href="rules.html">dice.rules</a></code></dt>
+<dd>
+<div class="desc"><p>Pure game rules for the two-dice Pig variant used in the assignment …</p></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="dice.evaluate_roll"><code class="name flex">
+<span>def <span class="ident">evaluate_roll</span></span>(<span>d1: int, d2: int) ‑> <a title="dice.rules.Outcome" href="rules.html#dice.rules.Outcome">Outcome</a></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def evaluate_roll(d1: int, d2: int) -&gt; Outcome:
+   &#34;&#34;&#34;Classify a two-dice roll into an :class:`Outcome`.
+
+
+   Parameters
+   ----------
+   d1, d2:
+       Values of the two dice, 1..6.
+   &#34;&#34;&#34;
+   if d1 == 1 and d2 == 1:
+       return Outcome.BUST_ALL
+   if d1 == 1 or d2 == 1:
+       return Outcome.AUTO_HOLD
+   return Outcome.CONTINUE</code></pre>
+</details>
+<div class="desc"><p>Classify a two-dice roll into an :class:<code><a title="dice.Outcome" href="#dice.Outcome">Outcome</a></code>.</p>
+<h2 id="parameters">Parameters</h2>
+<p>d1, d2:
+Values of the two dice, 1..6.</p></div>
+</dd>
+<dt id="dice.turn_points_gain"><code class="name flex">
+<span>def <span class="ident">turn_points_gain</span></span>(<span>d1: int, d2: int) ‑> int</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def turn_points_gain(d1: int, d2: int) -&gt; int:
+   &#34;&#34;&#34;Return the points to add to *turn total* from a roll.
+
+
+   Zero on BUST or AUTO_HOLD, otherwise the sum of the dice.
+   &#34;&#34;&#34;
+   return 0 if 1 in (d1, d2) else d1 + d2</code></pre>
+</details>
+<div class="desc"><p>Return the points to add to <em>turn total</em> from a roll.</p>
+<p>Zero on BUST or AUTO_HOLD, otherwise the sum of the dice.</p></div>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="dice.Computer"><code class="flex name class">
+<span>class <span class="ident">Computer</span></span>
+<span>(</span><span>pid: str,<br>name: str,<br>brain: <a title="dice.Intelligence" href="#dice.Intelligence">Intelligence</a>,<br>score: int = 0)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass
+class Computer:
+   &#34;&#34;&#34;Computer is-a Player but delegates to an :class:`Intelligence`.&#34;&#34;&#34;
+
+
+   pid: str
+   name: str
+   brain: Intelligence
+   score: int = 0
+
+
+   # Matching Player API used by Game
+   def rename(self, new_name: str) -&gt; None:  # pragma: no cover - trivial
+       self.name = new_name
+
+
+   def add_points(self, pts: int) -&gt; None:  # pragma: no cover - trivial
+       self.score += max(0, int(pts))
+
+
+   def reset_score(self) -&gt; None:  # pragma: no cover - trivial
+       self.score = 0
+
+
+   # Decision
+   def decide_hold(self, turn_total: int, my_score: int, opp_score: int, target: int) -&gt; bool:
+       if not self.brain:
+           raise ComputerError(&#34;Computer has no brain configured&#34;)
+       return self.brain.should_hold(turn_total, my_score, opp_score, target)</code></pre>
+</details>
+<div class="desc"><p>Computer is-a Player but delegates to an :class:<code><a title="dice.Intelligence" href="#dice.Intelligence">Intelligence</a></code>.</p></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="dice.Computer.brain"><code class="name">var <span class="ident">brain</span> : <a title="dice.computer.Intelligence" href="computer.html#dice.computer.Intelligence">Intelligence</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="dice.Computer.name"><code class="name">var <span class="ident">name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="dice.Computer.pid"><code class="name">var <span class="ident">pid</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="dice.Computer.score"><code class="name">var <span class="ident">score</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="dice.Computer.add_points"><code class="name flex">
+<span>def <span class="ident">add_points</span></span>(<span>self, pts: int) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_points(self, pts: int) -&gt; None:  # pragma: no cover - trivial
+    self.score += max(0, int(pts))</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="dice.Computer.decide_hold"><code class="name flex">
+<span>def <span class="ident">decide_hold</span></span>(<span>self, turn_total: int, my_score: int, opp_score: int, target: int) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def decide_hold(self, turn_total: int, my_score: int, opp_score: int, target: int) -&gt; bool:
+    if not self.brain:
+        raise ComputerError(&#34;Computer has no brain configured&#34;)
+    return self.brain.should_hold(turn_total, my_score, opp_score, target)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="dice.Computer.rename"><code class="name flex">
+<span>def <span class="ident">rename</span></span>(<span>self, new_name: str) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def rename(self, new_name: str) -&gt; None:  # pragma: no cover - trivial
+    self.name = new_name</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="dice.Computer.reset_score"><code class="name flex">
+<span>def <span class="ident">reset_score</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reset_score(self) -&gt; None:  # pragma: no cover - trivial
+    self.score = 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="dice.DiceHand"><code class="flex name class">
+<span>class <span class="ident">DiceHand</span></span>
+<span>(</span><span>count: int = 2)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass
+class DiceHand:
+   &#34;&#34;&#34;A hand of N dice. Default is the two dice used in Pig variant.&#34;&#34;&#34;
+
+
+   count: int = 2
+
+
+   def __post_init__(self) -&gt; None:
+       self._dice = [Die() for _ in range(self.count)]
+
+
+   def roll(self) -&gt; Tuple[int, ...]:
+       &#34;&#34;&#34;Roll all dice and return a tuple of their values.&#34;&#34;&#34;
+       return tuple(d.roll() for d in self._dice)</code></pre>
+</details>
+<div class="desc"><p>A hand of N dice. Default is the two dice used in Pig variant.</p></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="dice.DiceHand.count"><code class="name">var <span class="ident">count</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="dice.DiceHand.roll"><code class="name flex">
+<span>def <span class="ident">roll</span></span>(<span>self) ‑> Tuple[int, ...]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def roll(self) -&gt; Tuple[int, ...]:
+    &#34;&#34;&#34;Roll all dice and return a tuple of their values.&#34;&#34;&#34;
+    return tuple(d.roll() for d in self._dice)</code></pre>
+</details>
+<div class="desc"><p>Roll all dice and return a tuple of their values.</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="dice.Die"><code class="flex name class">
+<span>class <span class="ident">Die</span></span>
+<span>(</span><span>sides: int = 6, rng: random.Random | None = None)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass
+class Die:
+   &#34;&#34;&#34;A single die with a configurable number of sides.
+
+
+   Parameters
+   ----------
+   sides: int
+       Number of sides on the die, default 6.
+   rng: random.Random | None
+       Optional random number generator, useful for testing.
+   &#34;&#34;&#34;
+
+
+   sides: int = 6
+   rng: random.Random | None = None
+
+
+   def roll(self) -&gt; int:
+       &#34;&#34;&#34;Roll the die and return a value in ``[1, sides]``.&#34;&#34;&#34;
+       r = self.rng if self.rng is not None else random
+       return r.randint(1, self.sides)</code></pre>
+</details>
+<div class="desc"><p>A single die with a configurable number of sides.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>sides</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of sides on the die, default 6.</dd>
+<dt><strong><code>rng</code></strong> :&ensp;<code>random.Random | None</code></dt>
+<dd>Optional random number generator, useful for testing.</dd>
+</dl></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="dice.Die.rng"><code class="name">var <span class="ident">rng</span> : random.Random | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="dice.Die.sides"><code class="name">var <span class="ident">sides</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="dice.Die.roll"><code class="name flex">
+<span>def <span class="ident">roll</span></span>(<span>self) ‑> int</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def roll(self) -&gt; int:
+    &#34;&#34;&#34;Roll the die and return a value in ``[1, sides]``.&#34;&#34;&#34;
+    r = self.rng if self.rng is not None else random
+    return r.randint(1, self.sides)</code></pre>
+</details>
+<div class="desc"><p>Roll the die and return a value in <code>[1, sides]</code>.</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="dice.Game"><code class="flex name class">
+<span>class <span class="ident">Game</span></span>
+<span>(</span><span>players: List[<a title="dice.Player" href="#dice.Player">Player</a>],<br>target: int = 100,<br>dice: <a title="dice.DiceHand" href="#dice.DiceHand">DiceHand</a> = &lt;factory&gt;,<br>highs: Optional[HighScore] = None)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass
+class Game:
+   players: List[Player]
+   target: int = 100
+   dice: DiceHand = field(default_factory=DiceHand)
+   highs: Optional[HighScore] = None
+
+
+   def __post_init__(self) -&gt; None:
+       self.highs = self.highs or HighScore()
+       self.turn_total = 0
+       self.turns_taken = 0
+       self._current_idx = 0
+       self._winner: Optional[Player] = None
+       self._cheat_queue: List[Tuple[int, int]] = []
+
+
+   # ---- lifecycle ----
+   @classmethod
+   def vs_computer(cls, human_name: str = &#34;You&#34;, ai_level: str = &#34;medium&#34;, target: int = 100) -&gt; &#34;Game&#34;:
+       level = {&#34;easy&#34;: 15, &#34;medium&#34;: 20, &#34;hard&#34;: 25}.get(ai_level, 20)
+       p1 = Player(str(uuid.uuid4()), human_name)
+       bot = Computer(str(uuid.uuid4()), &#34;Computer&#34;, Intelligence(level))
+       return cls([p1, bot], target=target)
+
+
+   def start(self) -&gt; None:
+       for p in self.players:
+           p.reset_score()
+       self.turn_total = 0
+       self.turns_taken = 0
+       self._current_idx = 0
+       self._winner = None
+       self._cheat_queue.clear()
+
+
+   # ---- properties ----
+   def current_player(self) -&gt; Player:
+       return self.players[self._current_idx]
+
+
+   def opponent(self) -&gt; Player:
+       return self.players[1 - self._current_idx]
+
+
+   def winner(self) -&gt; Optional[Player]:
+       return self._winner
+
+
+   # ---- helpers ----
+   def _next_player(self) -&gt; None:
+       self._current_idx = 1 - self._current_idx
+       self.turn_total = 0
+
+
+   def set_cheat(self, next_rolls: List[Tuple[int, int]]) -&gt; None:
+       self._cheat_queue = list(next_rolls)
+
+
+   def _roll_dice(self) -&gt; Tuple[int, int]:
+       if self._cheat_queue:
+           return self._cheat_queue.pop(0)
+       d1, d2 = self.dice.roll()
+       return int(d1), int(d2)
+
+
+   # ---- actions ----
+   def roll(self) -&gt; Tuple[int, int, str]:
+       if self._winner:
+           return (0, 0, f&#34;Game over. {self._winner.name} already won.&#34;)
+
+
+       d1, d2 = self._roll_dice()
+       outcome = evaluate_roll(d1, d2)
+       message = &#34;&#34;
+
+
+       if outcome is Outcome.CONTINUE:
+           gain = turn_points_gain(d1, d2)
+           self.turn_total += gain
+           message = &#34;\n&#34;f&#34;Rolled {d1}+{d2} → +{gain} this turn (total {self.turn_total}).&#34;
+       elif outcome is Outcome.AUTO_HOLD:
+           message = &#34;\n&#34;f&#34;Rolled {d1}+{d2} (single 1) → auto-hold {self.turn_total}.&#34;
+           self.hold(auto=True)
+       else:  # BUST_ALL
+           self.current_player().reset_score()
+           message = &#34;\n&#34;f&#34;Rolled {d1}+{d2} (double ones) → lose all saved points!&#34;
+           self._next_player()
+           self.turns_taken += 1
+       return d1, d2, message
+
+
+   def hold(self, auto: bool = False) -&gt; str:
+       if self._winner:
+           return &#34;\n&#34;f&#34;Game over. {self._winner.name} already won.&#34;
+       player = self.current_player()
+       player.add_points(self.turn_total)
+       msg = f&#34;{player.name} holds {self.turn_total}. New score: {player.score}.&#34;
+       if player.score &gt;= self.target:
+           self._winner = player
+           msg += &#34;\n&#34;f&#34; \n{player.name} wins!&#34;
+           # update highscores
+           if self.highs:
+               self.highs.record_game(player.pid, player.name, True, self.turns_taken + 1, player.score)
+               self.highs.record_game(self.opponent().pid, self.opponent().name, False, self.turns_taken + 1, self.opponent().score)
+       self._next_player()
+       self.turns_taken += 1
+       return msg</code></pre>
+</details>
+<div class="desc"><p>Game(players: 'List[Player]', target: 'int' = 100, dice: 'DiceHand' = <factory>, highs: 'Optional[HighScore]' = None)</p></div>
+<h3>Static methods</h3>
+<dl>
+<dt id="dice.Game.vs_computer"><code class="name flex">
+<span>def <span class="ident">vs_computer</span></span>(<span>human_name: str = 'You', ai_level: str = 'medium', target: int = 100) ‑> <a title="dice.game.Game" href="game.html#dice.game.Game">Game</a></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="dice.Game.dice"><code class="name">var <span class="ident">dice</span> : <a title="dice.dice_hand.DiceHand" href="dice_hand.html#dice.dice_hand.DiceHand">DiceHand</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="dice.Game.highs"><code class="name">var <span class="ident">highs</span> : <a title="dice.highscore.HighScore" href="highscore.html#dice.highscore.HighScore">HighScore</a> | None</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="dice.Game.players"><code class="name">var <span class="ident">players</span> : List[<a title="dice.player.Player" href="player.html#dice.player.Player">Player</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="dice.Game.target"><code class="name">var <span class="ident">target</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="dice.Game.current_player"><code class="name flex">
+<span>def <span class="ident">current_player</span></span>(<span>self) ‑> <a title="dice.player.Player" href="player.html#dice.player.Player">Player</a></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def current_player(self) -&gt; Player:
+    return self.players[self._current_idx]</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="dice.Game.hold"><code class="name flex">
+<span>def <span class="ident">hold</span></span>(<span>self, auto: bool = False) ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def hold(self, auto: bool = False) -&gt; str:
+    if self._winner:
+        return &#34;\n&#34;f&#34;Game over. {self._winner.name} already won.&#34;
+    player = self.current_player()
+    player.add_points(self.turn_total)
+    msg = f&#34;{player.name} holds {self.turn_total}. New score: {player.score}.&#34;
+    if player.score &gt;= self.target:
+        self._winner = player
+        msg += &#34;\n&#34;f&#34; \n{player.name} wins!&#34;
+        # update highscores
+        if self.highs:
+            self.highs.record_game(player.pid, player.name, True, self.turns_taken + 1, player.score)
+            self.highs.record_game(self.opponent().pid, self.opponent().name, False, self.turns_taken + 1, self.opponent().score)
+    self._next_player()
+    self.turns_taken += 1
+    return msg</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="dice.Game.opponent"><code class="name flex">
+<span>def <span class="ident">opponent</span></span>(<span>self) ‑> <a title="dice.player.Player" href="player.html#dice.player.Player">Player</a></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def opponent(self) -&gt; Player:
+    return self.players[1 - self._current_idx]</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="dice.Game.roll"><code class="name flex">
+<span>def <span class="ident">roll</span></span>(<span>self) ‑> Tuple[int, int, str]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def roll(self) -&gt; Tuple[int, int, str]:
+    if self._winner:
+        return (0, 0, f&#34;Game over. {self._winner.name} already won.&#34;)
+
+
+    d1, d2 = self._roll_dice()
+    outcome = evaluate_roll(d1, d2)
+    message = &#34;&#34;
+
+
+    if outcome is Outcome.CONTINUE:
+        gain = turn_points_gain(d1, d2)
+        self.turn_total += gain
+        message = &#34;\n&#34;f&#34;Rolled {d1}+{d2} → +{gain} this turn (total {self.turn_total}).&#34;
+    elif outcome is Outcome.AUTO_HOLD:
+        message = &#34;\n&#34;f&#34;Rolled {d1}+{d2} (single 1) → auto-hold {self.turn_total}.&#34;
+        self.hold(auto=True)
+    else:  # BUST_ALL
+        self.current_player().reset_score()
+        message = &#34;\n&#34;f&#34;Rolled {d1}+{d2} (double ones) → lose all saved points!&#34;
+        self._next_player()
+        self.turns_taken += 1
+    return d1, d2, message</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="dice.Game.set_cheat"><code class="name flex">
+<span>def <span class="ident">set_cheat</span></span>(<span>self, next_rolls: List[Tuple[int, int]]) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_cheat(self, next_rolls: List[Tuple[int, int]]) -&gt; None:
+    self._cheat_queue = list(next_rolls)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="dice.Game.start"><code class="name flex">
+<span>def <span class="ident">start</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def start(self) -&gt; None:
+    for p in self.players:
+        p.reset_score()
+    self.turn_total = 0
+    self.turns_taken = 0
+    self._current_idx = 0
+    self._winner = None
+    self._cheat_queue.clear()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="dice.Game.winner"><code class="name flex">
+<span>def <span class="ident">winner</span></span>(<span>self) ‑> <a title="dice.player.Player" href="player.html#dice.player.Player">Player</a> | None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def winner(self) -&gt; Optional[Player]:
+    return self._winner</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="dice.Intelligence"><code class="flex name class">
+<span>class <span class="ident">Intelligence</span></span>
+<span>(</span><span>risk_threshold: int = 20)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass
+class Intelligence:
+   &#34;&#34;&#34;Threshold-based strategy with a tiny bit of endgame awareness.
+
+
+   Hold when turn_total &gt;= risk_threshold or when holding would win.
+   &#34;&#34;&#34;
+
+
+   risk_threshold: int = 20
+
+
+   def should_hold(self, turn_total: int, my_score: int, opp_score: int, target: int) -&gt; bool:  # noqa: ARG002
+       if my_score + turn_total &gt;= target:
+           return True
+       return turn_total &gt;= self.risk_threshold</code></pre>
+</details>
+<div class="desc"><p>Threshold-based strategy with a tiny bit of endgame awareness.</p>
+<p>Hold when turn_total &gt;= risk_threshold or when holding would win.</p></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="dice.Intelligence.risk_threshold"><code class="name">var <span class="ident">risk_threshold</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="dice.Intelligence.should_hold"><code class="name flex">
+<span>def <span class="ident">should_hold</span></span>(<span>self, turn_total: int, my_score: int, opp_score: int, target: int) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def should_hold(self, turn_total: int, my_score: int, opp_score: int, target: int) -&gt; bool:  # noqa: ARG002
+    if my_score + turn_total &gt;= target:
+        return True
+    return turn_total &gt;= self.risk_threshold</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="dice.Outcome"><code class="flex name class">
+<span>class <span class="ident">Outcome</span></span>
+<span>(</span><span>*args, **kwds)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Outcome(Enum):
+   &#34;&#34;&#34;Outcome of a two-dice roll under our rules.&#34;&#34;&#34;
+
+
+   BUST_ALL = auto()  # 1+1 -&gt; lose all saved points
+   AUTO_HOLD = auto()  # single 1 -&gt; save current turn total automatically
+   CONTINUE = auto()  # add both dice to turn total and continue</code></pre>
+</details>
+<div class="desc"><p>Outcome of a two-dice roll under our rules.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="dice.Outcome.AUTO_HOLD"><code class="name">var <span class="ident">AUTO_HOLD</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="dice.Outcome.BUST_ALL"><code class="name">var <span class="ident">BUST_ALL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="dice.Outcome.CONTINUE"><code class="name">var <span class="ident">CONTINUE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="dice.Player"><code class="flex name class">
+<span>class <span class="ident">Player</span></span>
+<span>(</span><span>pid: str, name: str)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dataclass
+class Player:
+   &#34;&#34;&#34;A human player with a stable id and mutable display name.&#34;&#34;&#34;
+
+
+   pid: str
+   name: str
+   score: int = field(default=0, init=False)
+
+
+   def rename(self, new_name: str) -&gt; None:
+       self.name = new_name.strip() or self.name
+
+
+   def add_points(self, pts: int) -&gt; None:
+       self.score += max(0, int(pts))
+
+
+   def reset_score(self) -&gt; None:
+       self.score = 0</code></pre>
+</details>
+<div class="desc"><p>A human player with a stable id and mutable display name.</p></div>
+<h3>Instance variables</h3>
+<dl>
+<dt id="dice.Player.name"><code class="name">var <span class="ident">name</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="dice.Player.pid"><code class="name">var <span class="ident">pid</span> : str</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="dice.Player.score"><code class="name">var <span class="ident">score</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="dice.Player.add_points"><code class="name flex">
+<span>def <span class="ident">add_points</span></span>(<span>self, pts: int) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_points(self, pts: int) -&gt; None:
+    self.score += max(0, int(pts))</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="dice.Player.rename"><code class="name flex">
+<span>def <span class="ident">rename</span></span>(<span>self, new_name: str) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def rename(self, new_name: str) -&gt; None:
+    self.name = new_name.strip() or self.name</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="dice.Player.reset_score"><code class="name flex">
+<span>def <span class="ident">reset_score</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reset_score(self) -&gt; None:
+    self.score = 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-submodules">Sub-modules</a></h3>
+<ul>
+<li><code><a title="dice.computer" href="computer.html">dice.computer</a></code></li>
+<li><code><a title="dice.dice" href="dice.html">dice.dice</a></code></li>
+<li><code><a title="dice.dice_hand" href="dice_hand.html">dice.dice_hand</a></code></li>
+<li><code><a title="dice.game" href="game.html">dice.game</a></code></li>
+<li><code><a title="dice.highscore" href="highscore.html">dice.highscore</a></code></li>
+<li><code><a title="dice.main" href="main.html">dice.main</a></code></li>
+<li><code><a title="dice.player" href="player.html">dice.player</a></code></li>
+<li><code><a title="dice.rules" href="rules.html">dice.rules</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="dice.evaluate_roll" href="#dice.evaluate_roll">evaluate_roll</a></code></li>
+<li><code><a title="dice.turn_points_gain" href="#dice.turn_points_gain">turn_points_gain</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="dice.Computer" href="#dice.Computer">Computer</a></code></h4>
+<ul class="two-column">
+<li><code><a title="dice.Computer.add_points" href="#dice.Computer.add_points">add_points</a></code></li>
+<li><code><a title="dice.Computer.brain" href="#dice.Computer.brain">brain</a></code></li>
+<li><code><a title="dice.Computer.decide_hold" href="#dice.Computer.decide_hold">decide_hold</a></code></li>
+<li><code><a title="dice.Computer.name" href="#dice.Computer.name">name</a></code></li>
+<li><code><a title="dice.Computer.pid" href="#dice.Computer.pid">pid</a></code></li>
+<li><code><a title="dice.Computer.rename" href="#dice.Computer.rename">rename</a></code></li>
+<li><code><a title="dice.Computer.reset_score" href="#dice.Computer.reset_score">reset_score</a></code></li>
+<li><code><a title="dice.Computer.score" href="#dice.Computer.score">score</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="dice.DiceHand" href="#dice.DiceHand">DiceHand</a></code></h4>
+<ul class="">
+<li><code><a title="dice.DiceHand.count" href="#dice.DiceHand.count">count</a></code></li>
+<li><code><a title="dice.DiceHand.roll" href="#dice.DiceHand.roll">roll</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="dice.Die" href="#dice.Die">Die</a></code></h4>
+<ul class="">
+<li><code><a title="dice.Die.rng" href="#dice.Die.rng">rng</a></code></li>
+<li><code><a title="dice.Die.roll" href="#dice.Die.roll">roll</a></code></li>
+<li><code><a title="dice.Die.sides" href="#dice.Die.sides">sides</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="dice.Game" href="#dice.Game">Game</a></code></h4>
+<ul class="two-column">
+<li><code><a title="dice.Game.current_player" href="#dice.Game.current_player">current_player</a></code></li>
+<li><code><a title="dice.Game.dice" href="#dice.Game.dice">dice</a></code></li>
+<li><code><a title="dice.Game.highs" href="#dice.Game.highs">highs</a></code></li>
+<li><code><a title="dice.Game.hold" href="#dice.Game.hold">hold</a></code></li>
+<li><code><a title="dice.Game.opponent" href="#dice.Game.opponent">opponent</a></code></li>
+<li><code><a title="dice.Game.players" href="#dice.Game.players">players</a></code></li>
+<li><code><a title="dice.Game.roll" href="#dice.Game.roll">roll</a></code></li>
+<li><code><a title="dice.Game.set_cheat" href="#dice.Game.set_cheat">set_cheat</a></code></li>
+<li><code><a title="dice.Game.start" href="#dice.Game.start">start</a></code></li>
+<li><code><a title="dice.Game.target" href="#dice.Game.target">target</a></code></li>
+<li><code><a title="dice.Game.vs_computer" href="#dice.Game.vs_computer">vs_computer</a></code></li>
+<li><code><a title="dice.Game.winner" href="#dice.Game.winner">winner</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="dice.Intelligence" href="#dice.Intelligence">Intelligence</a></code></h4>
+<ul class="">
+<li><code><a title="dice.Intelligence.risk_threshold" href="#dice.Intelligence.risk_threshold">risk_threshold</a></code></li>
+<li><code><a title="dice.Intelligence.should_hold" href="#dice.Intelligence.should_hold">should_hold</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="dice.Outcome" href="#dice.Outcome">Outcome</a></code></h4>
+<ul class="">
+<li><code><a title="dice.Outcome.AUTO_HOLD" href="#dice.Outcome.AUTO_HOLD">AUTO_HOLD</a></code></li>
+<li><code><a title="dice.Outcome.BUST_ALL" href="#dice.Outcome.BUST_ALL">BUST_ALL</a></code></li>
+<li><code><a title="dice.Outcome.CONTINUE" href="#dice.Outcome.CONTINUE">CONTINUE</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="dice.Player" href="#dice.Player">Player</a></code></h4>
+<ul class="two-column">
+<li><code><a title="dice.Player.add_points" href="#dice.Player.add_points">add_points</a></code></li>
+<li><code><a title="dice.Player.name" href="#dice.Player.name">name</a></code></li>
+<li><code><a title="dice.Player.pid" href="#dice.Player.pid">pid</a></code></li>
+<li><code><a title="dice.Player.rename" href="#dice.Player.rename">rename</a></code></li>
+<li><code><a title="dice.Player.reset_score" href="#dice.Player.reset_score">reset_score</a></code></li>
+<li><code><a title="dice.Player.score" href="#dice.Player.score">score</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

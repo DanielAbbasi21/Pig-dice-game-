@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>dice.main API documentation</title>
+<meta name="description" content="Text-based UI using cmd.Cmd. Keeps commands tiny &amp; friendly.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>dice.main</code></h1>
+</header>
+<section id="section-intro">
+<p>Text-based UI using cmd.Cmd. Keeps commands tiny &amp; friendly.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="dice.main.render"><code class="name flex">
+<span>def <span class="ident">render</span></span>(<span>game: Game) ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def render(game: Game) -&gt; str:
+   &#34;&#34;&#34;Return a short text summary of the current game state.&#34;&#34;&#34;
+   p = game.players
+   cur = game.current_player()
+   lines = [
+       &#34;&#34;,
+       f&#34;Turn: {cur.name}&#34;,
+       f&#34;Scores → {p[0].name}: {p[0].score} | {p[1].name}: {p[1].score}&#34;,
+       f&#34;Turn total: {game.turn_total}&#34;
+       &#34;\n&#34;,
+   ]
+   return &#34;\n&#34;.join(lines)</code></pre>
+</details>
+<div class="desc"><p>Return a short text summary of the current game state.</p></div>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="dice.main.PigDiceGame"><code class="flex name class">
+<span>class <span class="ident">PigDiceGame</span></span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PigDiceGame(cmd.Cmd):
+   &#34;&#34;&#34;Command-line shell for the Pig Dice game.&#34;&#34;&#34;
+   intro = BANNER
+   prompt = &#34;(pig) &#34;
+
+
+   def __init__(self) -&gt; None:
+       super().__init__()
+       self.highs = HighScore()
+       self.game = Game.vs_computer()
+       self.game.start()
+
+
+   # ---- helpers ----
+   def _println(self, *parts: str) -&gt; None:
+       for p in parts:
+           if p is not None and p != &#34;&#34;:
+               print(p)
+
+
+   # ---- commands ----
+   def do_rules(self, arg: str) -&gt; None:  # noqa: ARG002
+       &#34;&#34;&#34;Show the rules for this variant.&#34;&#34;&#34;
+       self._println(
+           &#34;Rules:&#34;,
+           &#34;  • Roll two dice each turn.&#34;,
+           &#34;  • Double ones (1+1): you lose all saved points; turn ends.&#34;,
+           &#34;  • If one die shows 1, your turn ends and you keep the points you earned.&#34;,
+           &#34;  • Otherwise: add both dice to your turn total and choose to roll/hold.&#34;,
+           &#34;  • First to 100 or more wins.&#34;,
+       )
+
+
+   def do_start(self, arg: str) -&gt; None:
+       &#34;&#34;&#34;start [target] [ai=easy|medium|hard] — start/restart a game.&#34;&#34;&#34;
+       try:
+           target = 100
+           ai = &#34;medium&#34;
+           for token in shlex.split(arg):
+               if token.startswith(&#34;ai=&#34;):
+                   ai = token.split(&#34;=&#34;, 1)[1]
+               else:
+                   target = int(token)
+           self.game = Game.vs_computer(ai_level=ai, target=target)
+           self.game.start()
+           self._println(&#34;&#34;, &#34;New game started!&#34;, render(self.game))
+       except Exception as exc:  # pragma: no cover - resilience only
+           self._println(f&#34;Could not start: {exc}&#34;)
+
+
+   def do_name(self, arg: str) -&gt; None:
+       &#34;&#34;&#34;name &lt;new name&gt; — change your display name (keeps stats).&#34;&#34;&#34;
+       name = arg.strip()
+       if not name:
+           self._println(&#34;\n&#34;&#34;Enter your name: name &lt;new name&gt;&#34;&#34;\n&#34;)
+           return
+       self.game.players[0].rename(name)
+       self.highs.ensure(self.game.players[0].pid, self.game.players[0].name)
+       self._println(&#34;\n&#34;f&#34;Hello, {self.game.players[0].name}!&#34;, render(self.game))
+
+
+   def do_roll(self, arg: str) -&gt; None:  # noqa: ARG002
+       &#34;&#34;&#34;Roll the dice for the current player. (Computer auto-plays its turn.)&#34;&#34;&#34;
+       cur = self.game.current_player()
+       if cur is self.game.players[1]:  # computer&#39;s turn (safety)
+           self._ai_turn()
+           return
+
+
+       # Human roll
+       d1, d2, msg = self.game.roll()
+
+
+       # If your roll ended your turn (single/double 1), let the AI handle rendering
+       if self.game.current_player() is self.game.players[1] and not self.game.winner():
+           self._println(msg)        # show the roll result
+           self._ai_turn()           # AI will render its own turn header/output
+       else:
+           self._println(msg, render(self.game))
+
+
+       if self.game.winner():
+           self._println(&#34;\n&#34;f&#34;🎉 {self.game.winner().name} wins!&#34;)
+
+
+   def do_hold(self, arg: str) -&gt; None:  # noqa: ARG002
+       &#34;&#34;&#34;Hold your current turn total.&#34;&#34;&#34;
+       cur = self.game.current_player()
+       if cur is self.game.players[1]:
+           self._println(&#34;It&#39;s not your turn.&#34;)
+           return
+       msg = self.game.hold()
+       self._println(msg)
+       if self.game.winner():
+           self._println(&#34;\n&#34;f&#34;🎉 {self.game.winner().name} wins!&#34;&#34;\n&#34;)
+       else:
+           self._ai_turn()  # AI will render once it starts
+
+
+   def _ai_turn(self) -&gt; None:
+       &#34;&#34;&#34;Let the computer play automatically until it holds or the turn ends.&#34;&#34;&#34;
+       acted = False
+       while self.game.winner() is None and self.game.current_player() is self.game.players[1]:
+           acted = True
+           my = self.game.players[1]
+           opp = self.game.players[0]
+
+
+           # Always show the current state before the AI acts
+           self._println(render(self.game))
+
+
+           # decide whether to hold
+           if getattr(my, &#34;decide_hold&#34;)(self.game.turn_total, my.score, opp.score, self.game.target):
+               msg = self.game.hold()
+               self._println(f&#34;Computer: {msg}&#34;)  # one-line
+               break
+
+
+           # otherwise roll  ← fixed indentation
+           d1, d2, msg = self.game.roll()
+           self._println(f&#34;Computer: {msg}&#34;)      # one-line
+
+
+           if self.game.winner():
+               self._println(&#34;\n&#34;f&#34;🎉 {self.game.winner().name} wins!&#34;&#34;\n&#34;)
+               return
+
+
+       # Show the board once more after the AI finishes (if no winner)
+       if acted and not self.game.winner():
+           self._println(render(self.game))
+
+
+   def do_highscore(self, arg: str) -&gt; None:  # noqa: ARG002
+       &#34;&#34;&#34;Show high-score table (top 10).&#34;&#34;&#34;
+       rows = self.highs.top(10)
+       if not rows:
+           self._println(&#34;No games recorded yet.&#34;)
+           return
+       self._println(&#34;Leaderboard (wins, games, win%, points):&#34;)
+       for i, r in enumerate(rows, 1):
+           pct = f&#34;{100*r[&#39;win_rate&#39;]:.0f}%&#34;
+           self._println(f&#34; {i:&gt;2}. {r[&#39;name&#39;]:&lt;15}  {r[&#39;wins&#39;]:&gt;3}/{r[&#39;games&#39;]:&lt;3}  {pct:&gt;4}  {r[&#39;points&#39;]:&gt;5}&#34;)
+
+
+   def do_cheat(self, arg: str) -&gt; None:
+       &#34;&#34;&#34;cheat &lt;d1&gt; &lt;d2&gt; [; &lt;d1&gt; &lt;d2&gt; ...] — queue up future rolls.
+
+
+       Example: cheat 6 6; 6 6; 1 1
+       &#34;&#34;&#34;
+       try:
+           batches: List[Tuple[int, int]] = []
+           for chunk in arg.split(&#34;;&#34;):
+               parts = [p for p in chunk.strip().split() if p]
+               if not parts:
+                   continue
+               if len(parts) != 2:
+                   raise ValueError(&#34;each chunk must be two ints&#34;)
+               batches.append((int(parts[0]), int(parts[1])))
+           self.game.set_cheat(batches)
+           self._println(&#34;\n&#34;f&#34;Queued {len(batches)} scripted rolls.&#34;)
+       except Exception as exc:  # pragma: no cover - resilience only
+           self._println(&#34;\n&#34;f&#34;Cheat parse error: {exc}&#34;)
+
+
+   def do_show(self, arg: str) -&gt; None:  # noqa: ARG002
+       &#34;&#34;&#34;Show current state.&#34;&#34;&#34;
+       self._println(render(self.game))
+
+
+   def do_help(self, arg: str) -&gt; None:  # noqa: ARG002
+       &#34;&#34;&#34;Show all commands with short descriptions.&#34;&#34;&#34;
+       if arg:  # built-in detail for help &lt;command&gt;
+           super().do_help(arg)
+           return
+       self._println(
+           &#34;&#34;,
+           &#34;\n&#34;
+           &#34;Available Commands:&#34;,
+           &#34;───────────────────&#34;,
+           &#34;cheat       → queue specific dice rolls for testing&#34;,
+           &#34;help        → show this help message&#34;,
+           &#34;highscore   → display the high-score leaderboard&#34;,
+           &#34;hold        → hold your current turn total and save points&#34;,
+           &#34;name        → change your player name (write the word &#39;name&#39; and the your name)&#34;,
+           &#34;quit        → exit the game&#34;,
+           &#34;roll        → roll the dice for your turn&#34;,
+           &#34;rules       → show the game rules&#34;,
+           &#34;show        → display the current game state&#34;,
+           &#34;start       → start or restart a new game&#34;,
+           &#34;&#34;,
+           &#34;\n&#34;
+           &#34;Tip: type a command and press Enter (example: roll)&#34;,
+       )
+
+
+   def do_quit(self, arg: str) -&gt; bool:  # noqa: ARG002
+       &#34;&#34;&#34;Quit the game shell.&#34;&#34;&#34;
+       self._println(&#34;&#34;, &#34;\n&#34; &#34;Bye!&#34;)
+       return True
+
+
+   def default(self, line: str) -&gt; None:  # pragma: no cover - UX only
+       &#34;&#34;&#34;Handle unknown commands gracefully.&#34;&#34;&#34;
+       self._println(&#34;\n&#34;f&#34;Unknown command: {line}&#34;)</code></pre>
+</details>
+<div class="desc"><p>Command-line shell for the Pig Dice game.</p>
+<p>Instantiate a line-oriented interpreter framework.</p>
+<p>The optional argument 'completekey' is the readline name of a
+completion key; it defaults to the Tab key. If completekey is
+not None and the readline module is available, command completion
+is done automatically. The optional arguments stdin and stdout
+specify alternate input and output file objects; if not specified,
+sys.stdin and sys.stdout are used.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>cmd.Cmd</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="dice.main.PigDiceGame.intro"><code class="name">var <span class="ident">intro</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="dice.main.PigDiceGame.prompt"><code class="name">var <span class="ident">prompt</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="dice.main.PigDiceGame.default"><code class="name flex">
+<span>def <span class="ident">default</span></span>(<span>self, line: str) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def default(self, line: str) -&gt; None:  # pragma: no cover - UX only
+    &#34;&#34;&#34;Handle unknown commands gracefully.&#34;&#34;&#34;
+    self._println(&#34;\n&#34;f&#34;Unknown command: {line}&#34;)</code></pre>
+</details>
+<div class="desc"><p>Handle unknown commands gracefully.</p></div>
+</dd>
+<dt id="dice.main.PigDiceGame.do_cheat"><code class="name flex">
+<span>def <span class="ident">do_cheat</span></span>(<span>self, arg: str) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def do_cheat(self, arg: str) -&gt; None:
+    &#34;&#34;&#34;cheat &lt;d1&gt; &lt;d2&gt; [; &lt;d1&gt; &lt;d2&gt; ...] — queue up future rolls.
+
+
+    Example: cheat 6 6; 6 6; 1 1
+    &#34;&#34;&#34;
+    try:
+        batches: List[Tuple[int, int]] = []
+        for chunk in arg.split(&#34;;&#34;):
+            parts = [p for p in chunk.strip().split() if p]
+            if not parts:
+                continue
+            if len(parts) != 2:
+                raise ValueError(&#34;each chunk must be two ints&#34;)
+            batches.append((int(parts[0]), int(parts[1])))
+        self.game.set_cheat(batches)
+        self._println(&#34;\n&#34;f&#34;Queued {len(batches)} scripted rolls.&#34;)
+    except Exception as exc:  # pragma: no cover - resilience only
+        self._println(&#34;\n&#34;f&#34;Cheat parse error: {exc}&#34;)</code></pre>
+</details>
+<div class="desc"><p>cheat <d1> <d2> [; <d1> <d2> &hellip;] — queue up future rolls.</p>
+<p>Example: cheat 6 6; 6 6; 1 1</p></div>
+</dd>
+<dt id="dice.main.PigDiceGame.do_help"><code class="name flex">
+<span>def <span class="ident">do_help</span></span>(<span>self, arg: str) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def do_help(self, arg: str) -&gt; None:  # noqa: ARG002
+    &#34;&#34;&#34;Show all commands with short descriptions.&#34;&#34;&#34;
+    if arg:  # built-in detail for help &lt;command&gt;
+        super().do_help(arg)
+        return
+    self._println(
+        &#34;&#34;,
+        &#34;\n&#34;
+        &#34;Available Commands:&#34;,
+        &#34;───────────────────&#34;,
+        &#34;cheat       → queue specific dice rolls for testing&#34;,
+        &#34;help        → show this help message&#34;,
+        &#34;highscore   → display the high-score leaderboard&#34;,
+        &#34;hold        → hold your current turn total and save points&#34;,
+        &#34;name        → change your player name (write the word &#39;name&#39; and the your name)&#34;,
+        &#34;quit        → exit the game&#34;,
+        &#34;roll        → roll the dice for your turn&#34;,
+        &#34;rules       → show the game rules&#34;,
+        &#34;show        → display the current game state&#34;,
+        &#34;start       → start or restart a new game&#34;,
+        &#34;&#34;,
+        &#34;\n&#34;
+        &#34;Tip: type a command and press Enter (example: roll)&#34;,
+    )</code></pre>
+</details>
+<div class="desc"><p>Show all commands with short descriptions.</p></div>
+</dd>
+<dt id="dice.main.PigDiceGame.do_highscore"><code class="name flex">
+<span>def <span class="ident">do_highscore</span></span>(<span>self, arg: str) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def do_highscore(self, arg: str) -&gt; None:  # noqa: ARG002
+    &#34;&#34;&#34;Show high-score table (top 10).&#34;&#34;&#34;
+    rows = self.highs.top(10)
+    if not rows:
+        self._println(&#34;No games recorded yet.&#34;)
+        return
+    self._println(&#34;Leaderboard (wins, games, win%, points):&#34;)
+    for i, r in enumerate(rows, 1):
+        pct = f&#34;{100*r[&#39;win_rate&#39;]:.0f}%&#34;
+        self._println(f&#34; {i:&gt;2}. {r[&#39;name&#39;]:&lt;15}  {r[&#39;wins&#39;]:&gt;3}/{r[&#39;games&#39;]:&lt;3}  {pct:&gt;4}  {r[&#39;points&#39;]:&gt;5}&#34;)</code></pre>
+</details>
+<div class="desc"><p>Show high-score table (top 10).</p></div>
+</dd>
+<dt id="dice.main.PigDiceGame.do_hold"><code class="name flex">
+<span>def <span class="ident">do_hold</span></span>(<span>self, arg: str) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def do_hold(self, arg: str) -&gt; None:  # noqa: ARG002
+    &#34;&#34;&#34;Hold your current turn total.&#34;&#34;&#34;
+    cur = self.game.current_player()
+    if cur is self.game.players[1]:
+        self._println(&#34;It&#39;s not your turn.&#34;)
+        return
+    msg = self.game.hold()
+    self._println(msg)
+    if self.game.winner():
+        self._println(&#34;\n&#34;f&#34;🎉 {self.game.winner().name} wins!&#34;&#34;\n&#34;)
+    else:
+        self._ai_turn()  # AI will render once it starts</code></pre>
+</details>
+<div class="desc"><p>Hold your current turn total.</p></div>
+</dd>
+<dt id="dice.main.PigDiceGame.do_name"><code class="name flex">
+<span>def <span class="ident">do_name</span></span>(<span>self, arg: str) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def do_name(self, arg: str) -&gt; None:
+    &#34;&#34;&#34;name &lt;new name&gt; — change your display name (keeps stats).&#34;&#34;&#34;
+    name = arg.strip()
+    if not name:
+        self._println(&#34;\n&#34;&#34;Enter your name: name &lt;new name&gt;&#34;&#34;\n&#34;)
+        return
+    self.game.players[0].rename(name)
+    self.highs.ensure(self.game.players[0].pid, self.game.players[0].name)
+    self._println(&#34;\n&#34;f&#34;Hello, {self.game.players[0].name}!&#34;, render(self.game))</code></pre>
+</details>
+<div class="desc"><p>name <new name> — change your display name (keeps stats).</p></div>
+</dd>
+<dt id="dice.main.PigDiceGame.do_quit"><code class="name flex">
+<span>def <span class="ident">do_quit</span></span>(<span>self, arg: str) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def do_quit(self, arg: str) -&gt; bool:  # noqa: ARG002
+    &#34;&#34;&#34;Quit the game shell.&#34;&#34;&#34;
+    self._println(&#34;&#34;, &#34;\n&#34; &#34;Bye!&#34;)
+    return True</code></pre>
+</details>
+<div class="desc"><p>Quit the game shell.</p></div>
+</dd>
+<dt id="dice.main.PigDiceGame.do_roll"><code class="name flex">
+<span>def <span class="ident">do_roll</span></span>(<span>self, arg: str) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def do_roll(self, arg: str) -&gt; None:  # noqa: ARG002
+    &#34;&#34;&#34;Roll the dice for the current player. (Computer auto-plays its turn.)&#34;&#34;&#34;
+    cur = self.game.current_player()
+    if cur is self.game.players[1]:  # computer&#39;s turn (safety)
+        self._ai_turn()
+        return
+
+
+    # Human roll
+    d1, d2, msg = self.game.roll()
+
+
+    # If your roll ended your turn (single/double 1), let the AI handle rendering
+    if self.game.current_player() is self.game.players[1] and not self.game.winner():
+        self._println(msg)        # show the roll result
+        self._ai_turn()           # AI will render its own turn header/output
+    else:
+        self._println(msg, render(self.game))
+
+
+    if self.game.winner():
+        self._println(&#34;\n&#34;f&#34;🎉 {self.game.winner().name} wins!&#34;)</code></pre>
+</details>
+<div class="desc"><p>Roll the dice for the current player. (Computer auto-plays its turn.)</p></div>
+</dd>
+<dt id="dice.main.PigDiceGame.do_rules"><code class="name flex">
+<span>def <span class="ident">do_rules</span></span>(<span>self, arg: str) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def do_rules(self, arg: str) -&gt; None:  # noqa: ARG002
+    &#34;&#34;&#34;Show the rules for this variant.&#34;&#34;&#34;
+    self._println(
+        &#34;Rules:&#34;,
+        &#34;  • Roll two dice each turn.&#34;,
+        &#34;  • Double ones (1+1): you lose all saved points; turn ends.&#34;,
+        &#34;  • If one die shows 1, your turn ends and you keep the points you earned.&#34;,
+        &#34;  • Otherwise: add both dice to your turn total and choose to roll/hold.&#34;,
+        &#34;  • First to 100 or more wins.&#34;,
+    )</code></pre>
+</details>
+<div class="desc"><p>Show the rules for this variant.</p></div>
+</dd>
+<dt id="dice.main.PigDiceGame.do_show"><code class="name flex">
+<span>def <span class="ident">do_show</span></span>(<span>self, arg: str) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def do_show(self, arg: str) -&gt; None:  # noqa: ARG002
+    &#34;&#34;&#34;Show current state.&#34;&#34;&#34;
+    self._println(render(self.game))</code></pre>
+</details>
+<div class="desc"><p>Show current state.</p></div>
+</dd>
+<dt id="dice.main.PigDiceGame.do_start"><code class="name flex">
+<span>def <span class="ident">do_start</span></span>(<span>self, arg: str) ‑> None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def do_start(self, arg: str) -&gt; None:
+    &#34;&#34;&#34;start [target] [ai=easy|medium|hard] — start/restart a game.&#34;&#34;&#34;
+    try:
+        target = 100
+        ai = &#34;medium&#34;
+        for token in shlex.split(arg):
+            if token.startswith(&#34;ai=&#34;):
+                ai = token.split(&#34;=&#34;, 1)[1]
+            else:
+                target = int(token)
+        self.game = Game.vs_computer(ai_level=ai, target=target)
+        self.game.start()
+        self._println(&#34;&#34;, &#34;New game started!&#34;, render(self.game))
+    except Exception as exc:  # pragma: no cover - resilience only
+        self._println(f&#34;Could not start: {exc}&#34;)</code></pre>
+</details>
+<div class="desc"><p>start [target] [ai=easy|medium|hard] — start/restart a game.</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="dice" href="index.html">dice</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="dice.main.render" href="#dice.main.render">render</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="dice.main.PigDiceGame" href="#dice.main.PigDiceGame">PigDiceGame</a></code></h4>
+<ul class="two-column">
+<li><code><a title="dice.main.PigDiceGame.default" href="#dice.main.PigDiceGame.default">default</a></code></li>
+<li><code><a title="dice.main.PigDiceGame.do_cheat" href="#dice.main.PigDiceGame.do_cheat">do_cheat</a></code></li>
+<li><code><a title="dice.main.PigDiceGame.do_help" href="#dice.main.PigDiceGame.do_help">do_help</a></code></li>
+<li><code><a title="dice.main.PigDiceGame.do_highscore" href="#dice.main.PigDiceGame.do_highscore">do_highscore</a></code></li>
+<li><code><a title="dice.main.PigDiceGame.do_hold" href="#dice.main.PigDiceGame.do_hold">do_hold</a></code></li>
+<li><code><a title="dice.main.PigDiceGame.do_name" href="#dice.main.PigDiceGame.do_name">do_name</a></code></li>
+<li><code><a title="dice.main.PigDiceGame.do_quit" href="#dice.main.PigDiceGame.do_quit">do_quit</a></code></li>
+<li><code><a title="dice.main.PigDiceGame.do_roll" href="#dice.main.PigDiceGame.do_roll">do_roll</a></code></li>
+<li><code><a title="dice.main.PigDiceGame.do_rules" href="#dice.main.PigDiceGame.do_rules">do_rules</a></code></li>
+<li><code><a title="dice.main.PigDiceGame.do_show" href="#dice.main.PigDiceGame.do_show">do_show</a></code></li>
+<li><code><a title="dice.main.PigDiceGame.do_start" href="#dice.main.PigDiceGame.do_start">do_start</a></code></li>
+<li><code><a title="dice.main.PigDiceGame.intro" href="#dice.main.PigDiceGame.intro">intro</a></code></li>
+<li><code><a title="dice.main.PigDiceGame.prompt" href="#dice.main.PigDiceGame.prompt">prompt</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>
